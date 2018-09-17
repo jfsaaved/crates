@@ -41,13 +41,17 @@ public class CratesErrorController implements ErrorController{
 		
 		return ERROR_TEMPLATE;
 	}
-
+	
 	@Override
 	public String getErrorPath() {
 		return ERROR_PATH;
 	}
 	
-
+	@RequestMapping("/404")
+	public String pageNotFound(Model model, HttpServletRequest request,WebRequest webRequest){
+		model.addAttribute("error", getErrorAttributes(request, webRequest, true));
+		return "404";
+	}
 	
 	private Map<String, Object> getErrorAttributes(HttpServletRequest request, WebRequest webRequest, boolean includeStackTrace) {
 	    return this.errorAttributes.getErrorAttributes(webRequest, includeStackTrace);
