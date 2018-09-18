@@ -18,7 +18,7 @@ import org.springframework.web.context.request.WebRequest;
 public class CratesErrorController implements ErrorController{
 
 	private static final String ERROR_PATH = "/error";
-	private static final String ERROR_TEMPLATE = "customError";
+	private static final String ERROR_TEMPLATE = "error";
 	
 	private final ErrorAttributes errorAttributes;
 
@@ -28,16 +28,22 @@ public class CratesErrorController implements ErrorController{
 	}
 
 	@RequestMapping(ERROR_PATH)
-	public String error(Model model,HttpServletRequest request,WebRequest webRequest) {
+	public String error(Model model,WebRequest webRequest) {
 		
-		// {error={timestamp=Mon Nov 02 12:40:50 EST 2015, status=404, error=Not Found, message=No message available, path=/foo}}
-		Map<String,Object> error = getErrorAttributes(request, webRequest, true);
+		Map<String,Object> error = this.errorAttributes.getErrorAttributes(webRequest, true);
 		
-		model.addAttribute("timestamp", error.get("timestamp"));
-		model.addAttribute("status", error.get("status"));
-		model.addAttribute("error", error.get("error"));
-		model.addAttribute("message", error.get("message"));
-		model.addAttribute("path", error.get("path"));
+		//model.addAttribute("timestamp", error.get("timestamp"));
+		//model.addAttribute("message", error.get("message"));
+		//model.addAttribute("path", error.get("path"));
+		//model.addAttribute("error", error.get("error"));
+		
+		model.addAttribute("status", error.get("status") + " error");
+		
+		String description = "";
+		if(error.get("status").toString().equals("404"))
+			description = "Page not found.";
+		
+		model.addAttribute("description",description);
 		
 		return ERROR_TEMPLATE;
 	}
@@ -47,14 +53,4 @@ public class CratesErrorController implements ErrorController{
 		return ERROR_PATH;
 	}
 	
-	@RequestMapping("/404")
-	public String pageNotFound(Model model, HttpServletRequest request,WebRequest webRequest){
-		model.addAttribute("error", getErrorAttributes(request, webRequest, true));
-		return "404";
-	}
-	
-	private Map<String, Object> getErrorAttributes(HttpServletRequest request, WebRequest webRequest, boolean includeStackTrace) {
-	    return this.errorAttributes.getErrorAttributes(webRequest, includeStackTrace);
-	}
-
 }
