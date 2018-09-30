@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url:
-    username:
-    password:
+    url: jdbc:mysql://sk122abz1gc157co:chpia1oqu93ib6dn@nuskkyrsgmn5rw8c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/cqxnzj832080y1mp
+    username: sk122abz1gc157co
+    password: chpia1oqu93ib6dn
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-autp: validate
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    database: mysql
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
     
