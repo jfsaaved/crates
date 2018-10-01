@@ -1,11 +1,13 @@
 package com.crates.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 public class Sample {
 	
 	@Id
@@ -20,6 +22,12 @@ public class Sample {
 		this.link = "";
 		this.artist = "";
 		this.title = "";
+	}
+	
+	public Sample(String link, String title, String artist){
+		this.link = link;
+		this.title = title;
+		this.artist = artist;
 	}
 
 
