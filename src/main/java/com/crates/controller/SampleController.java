@@ -9,26 +9,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crates.domain.Sample;
 import com.crates.repository.SampleRepository;
+import com.crates.service.SampleService;
 
 @Controller
 @RequestMapping(path="/sample")
 public class SampleController {
 	
 	@Autowired
-	private SampleRepository sampleRepository;
-	
+	private SampleService sampleService;
+
 	@GetMapping(path="/add")
 	public @ResponseBody String addNewSample (@RequestParam String title, @RequestParam String link, @RequestParam String artist){
 		Sample s = new Sample(title, link, artist);
-		sampleRepository.save(s);
+		sampleService.save(s);
 		return "Saved";
 		
 	}
 	
 	@GetMapping(path="/all")
-	public @ResponseBody Iterable<Sample> getAllSamples() {
+	public @ResponseBody String getAllSamples() {
 		// This returns a JSON or XML with the users
-		return sampleRepository.findAll();
+		return sampleService.list().get(0).toString();
 	}
 
 }
