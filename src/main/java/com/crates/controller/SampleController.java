@@ -29,7 +29,7 @@ public class SampleController {
 	@GetMapping(path="/all")
 	public @ResponseBody String getAllSamples() {
 		// This returns a JSON or XML with the users
-		return sampleService.list().get(0).toString();
+		return sampleService.listAllTitleAsString();
 	}
 
 }

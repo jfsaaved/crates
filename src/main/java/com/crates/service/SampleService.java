@@ -24,6 +24,17 @@ public class SampleService {
 		return sampleRepositry.findAllByOrderByTitleAsc();
 	}
 	
+	public String listAllTitleAsString(){
+		List<Sample> sampleList = sampleRepositry.findAllByOrderByTitleAsc();
+		String finalString = "";
+		
+		for (Sample sample : sampleList){
+			finalString += sample.getTitle();
+		}
+		
+		return finalString;
+	}
+	
 	public Sample save(Sample sample){
 		return this.sampleRepositry.save(sample);
 	}

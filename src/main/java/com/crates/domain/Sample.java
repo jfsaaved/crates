@@ -29,6 +29,10 @@ public class Sample {
 		this.title = title;
 		this.artist = artist;
 	}
+	
+	public String getTitle(){
+		return title;
+	}
 
 
 }
