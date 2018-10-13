@@ -19,19 +19,35 @@ public class Sample {
 	private String artist;
 	
 	public Sample(){
-		this.link = "";
-		this.artist = "";
+		this.setLink("");
+		this.setArtist("");
 		this.title = "";
 	}
 	
 	public Sample(String link, String title, String artist){
-		this.link = link;
+		this.setLink(link);
 		this.title = title;
-		this.artist = artist;
+		this.setArtist(artist);
 	}
 	
 	public String getTitle(){
 		return title;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public String getArtist() {
+		return artist;
+	}
+
+	public void setArtist(String artist) {
+		this.artist = artist;
 	}
 
 

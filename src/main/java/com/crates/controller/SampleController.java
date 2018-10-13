@@ -1,17 +1,23 @@
 package com.crates.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.crates.domain.Sample;
 import com.crates.repository.SampleRepository;
 import com.crates.service.SampleService;
 
-@Controller
+@RestController
 @RequestMapping(path="/sample")
 public class SampleController {
 	
@@ -27,9 +33,15 @@ public class SampleController {
 	}
 	
 	@GetMapping(path="/all")
-	public @ResponseBody String getAllSamples() {
+	public ResponseEntity<Object> getAllSamples() {
 		// This returns a JSON or XML with the users
-		return sampleService.listAllTitleAsString();
+		
+        List<Sample> entities = new ArrayList<Sample>();
+        for (Sample n : sampleService.list()) {
+            entities.add(n);
+        }
+        return new ResponseEntity<Object>(entities, HttpStatus.OK);
+		//return sampleService.listAllTitleAsString();
 	}
 
 }
