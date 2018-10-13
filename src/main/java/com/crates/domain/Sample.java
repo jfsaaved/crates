@@ -14,9 +14,9 @@ public class Sample {
 	@GeneratedValue
 	private Long id;
 	
-	private @Getter @Setter String link;
-	private @Getter @Setter String title;
-	private @Getter @Setter String artist;
+	private String link;
+	private String title;
+	private String artist;
 	
 	public Sample(){
 		this.link = "";
