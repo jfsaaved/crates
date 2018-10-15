@@ -1,5 +1,7 @@
 package com.crates.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,6 +19,7 @@ public class Sample {
 	private String link;
 	private String title;
 	private String artist;
+	private List<Element> elements;
 	
 	public Sample(){
 		this.setLink("");
@@ -48,6 +51,14 @@ public class Sample {
 
 	public void setArtist(String artist) {
 		this.artist = artist;
+	}
+
+	public List<Element> getElements() {
+		return elements;
+	}
+
+	public void setElements(List<Element> elements) {
+		this.elements = elements;
 	}
 
 
