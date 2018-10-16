@@ -19,7 +19,7 @@ public class Sample {
 	private String link;
 	private String title;
 	private String artist;
-	private List<Element> elements;
+	private List<String> tags;
 	
 	public Sample(){
 		this.setLink("");
@@ -53,12 +53,12 @@ public class Sample {
 		this.artist = artist;
 	}
 
-	public List<Element> getElements() {
-		return elements;
+	public List<String> getTags() {
+		return tags;
 	}
 
-	public void setElements(List<Element> elements) {
-		this.elements = elements;
+	public void setTags(List<String> elements) {
+		this.tags = tags;
 	}
 
 
