@@ -1,8 +1,16 @@
 package com.crates.domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 public class Beat {
 	
-	// Beat ID
-	// Producer ID
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	@OneToOne
+	private Flip flip;
 
 }

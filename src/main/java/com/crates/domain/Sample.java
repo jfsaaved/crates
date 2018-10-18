@@ -3,13 +3,19 @@ package com.crates.domain;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name="\"Sample\"")
 public class Sample {
 	
 	@Id
@@ -17,9 +23,15 @@ public class Sample {
 	private Long id;
 	
 	private String link;
+	
+	@NotEmpty
 	private String title;
+	
+	@NotEmpty
 	private String artist;
-	private List<String> tags;
+	
+	@OneToMany(targetEntity=Flip.class, mappedBy="sample", fetch=FetchType.EAGER)
+	private List<Flip> flips;
 	
 	public Sample(){
 		this.setLink("");
@@ -51,14 +63,6 @@ public class Sample {
 
 	public void setArtist(String artist) {
 		this.artist = artist;
-	}
-
-	public List<String> getTags() {
-		return tags;
-	}
-
-	public void setTags(List<String> elements) {
-		this.tags = tags;
 	}
 
 
