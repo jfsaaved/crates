@@ -24,24 +24,6 @@ public class SampleController {
 	@Autowired
 	private SampleService sampleService;
 
-	@GetMapping(path="/add")
-	public @ResponseBody String addNewSample (@RequestParam String title, @RequestParam String link, @RequestParam String artist){
-		Sample s = new Sample(title, link, artist);
-		sampleService.save(s);
-		return "Saved";
-		
-	}
-	
-	@GetMapping(path="/all")
-	public ResponseEntity<Object> getAllSamples() {
-		// This returns a JSON or XML with the users
-		
-        List<Sample> entities = new ArrayList<Sample>();
-        for (Sample n : sampleService.list()) {
-            entities.add(n);
-        }
-        return new ResponseEntity<Object>(entities, HttpStatus.OK);
-		//return sampleService.listAllTitleAsString();
-	}
+
 
 }

@@ -1,5 +1,6 @@
 package com.crates.domain;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,11 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name="\"Sample\"")
@@ -21,6 +24,10 @@ public class Sample {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat ( pattern="yyyy")
+	private Date year;
 	
 	private String link;
 	
@@ -34,15 +41,7 @@ public class Sample {
 	private List<Flip> flips;
 	
 	public Sample(){
-		this.setLink("");
-		this.setArtist("");
-		this.title = "";
-	}
-	
-	public Sample(String link, String title, String artist){
-		this.setLink(link);
-		this.title = title;
-		this.setArtist(artist);
+
 	}
 	
 	public String getTitle(){
@@ -63,6 +62,18 @@ public class Sample {
 
 	public void setArtist(String artist) {
 		this.artist = artist;
+	}
+	
+	public List<Flip> getFlips(){
+		return flips;
+	}
+	
+	public void setFlips(List<Flip> flips){
+		this.flips = flips;
+	}
+	
+	public void addFlip(Flip flip){
+		flips.add(flip);
 	}
 
 

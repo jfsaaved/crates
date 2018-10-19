@@ -20,23 +20,4 @@ public class SampleService {
 		this.sampleRepositry = sampleRepository;
 	}
 	
-	public List<Sample> list() {
-		return sampleRepositry.findAllByOrderByTitleAsc();
-	}
-	
-	public String listAllTitleAsString(){
-		List<Sample> sampleList = sampleRepositry.findAllByOrderByTitleAsc();
-		String finalString = "";
-		
-		for (Sample sample : sampleList){
-			finalString += sample.getTitle();
-		}
-		
-		return finalString;
-	}
-	
-	public Sample save(Sample sample){
-		return this.sampleRepositry.save(sample);
-	}
-	
 }

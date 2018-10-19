@@ -2,10 +2,8 @@ package com.crates.repository;
 
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
-import com.crates.domain.Beat;
+import com.crates.domain.Producer;
 
-public interface BeatRepository extends CrudRepository<Beat, Long>{
-	
-	
+public interface ProducerRepository extends CrudRepository<Producer, Long> {
 
 }

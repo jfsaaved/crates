@@ -23,5 +23,33 @@ public class Producer {
 	
 	@OneToMany(targetEntity=Beat.class, mappedBy="producer", fetch=FetchType.EAGER)
 	private List<Beat> beats;
+	
+	public Producer(){
+		
+	}
+	
+	public Long getId(){
+		return id;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	public List<Beat> getBeats(){
+		return beats;
+	}
+	
+	public void setBeats(List<Beat> beats){
+		this.beats = beats;
+	}
+	
+	public void addBeat(Beat beat){
+		beats.add(beat);
+	}
 
 }
