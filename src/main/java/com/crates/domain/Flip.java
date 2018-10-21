@@ -30,7 +30,7 @@ public class Flip {
 	@ManyToOne
 	private Sample sample;
 	
-	@OneToOne
+	@ManyToOne
 	private Beat beat;
 
 	public Flip(){

@@ -17,13 +17,14 @@ import com.crates.domain.Sample;
 import com.crates.repository.SampleRepository;
 import com.crates.service.SampleService;
 
-@RestController
-@RequestMapping(path="/sample")
+@Controller
 public class SampleController {
 	
-	@Autowired
 	private SampleService sampleService;
 
-
-
+	@Autowired
+	public SampleController(SampleService sampleService){
+		this.sampleService = sampleService;
+	}
+	
 }
