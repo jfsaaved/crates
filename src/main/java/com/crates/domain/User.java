@@ -1,11 +1,14 @@
 package com.crates.domain;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -18,7 +21,10 @@ public class User {
 	private String passwordConfirm;
 	private Set<Role> roles;
 	
-	//Producer stuff
+	private String alias;
+	
+	@OneToMany(targetEntity=Beat.class, mappedBy="user", fetch=FetchType.EAGER)
+	private List<Beat> beats;
 	
 	public Long getId() {
 		return id;
