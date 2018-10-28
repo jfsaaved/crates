@@ -21,9 +21,6 @@ public class User {
 	private String passwordConfirm;
 	private Set<Role> roles;
 	
-	@OneToMany(targetEntity=Beat.class, mappedBy="user", fetch=FetchType.EAGER)
-	private List<Beat> beats;
-	
 	public Long getId() {
 		return id;
 	}
