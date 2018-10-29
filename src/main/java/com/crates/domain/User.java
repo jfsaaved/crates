@@ -21,6 +21,9 @@ public class User {
 	private String passwordConfirm;
 	private Set<Role> roles;
 	
+	@OneToMany(targetEntity=Sample.class, mappedBy="user", fetch=FetchType.EAGER)
+	private Set<Sample> samples;
+	
 	public Long getId() {
 		return id;
 	}
@@ -57,6 +60,13 @@ public class User {
 		this.roles = roles;
 	}
 	
+	public Set<Sample> getSamples() {
+		return samples;
+	}
+
+	public void setSamples(Set<Sample> samples) {
+		this.samples = samples;
+	}
 	
 
 }
