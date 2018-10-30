@@ -2,11 +2,13 @@ package com.crates.domain;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -39,6 +41,9 @@ public class Sample {
 	
 	@OneToMany(targetEntity=Flip.class, mappedBy="sample", fetch=FetchType.EAGER)
 	private List<Flip> flips;
+	
+	@ManyToMany
+	private Set<User> users;
 	
 	public Sample(){
 

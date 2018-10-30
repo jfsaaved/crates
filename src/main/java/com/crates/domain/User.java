@@ -8,9 +8,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="\"User\"")
 public class User {
 	
 	@Id
@@ -19,9 +22,8 @@ public class User {
 	private String username;
 	private String password;
 	private String passwordConfirm;
-	private Set<Role> roles;
 	
-	@OneToMany(targetEntity=Sample.class, mappedBy="user", fetch=FetchType.EAGER)
+	@ManyToMany
 	private Set<Sample> samples;
 	
 	public Long getId() {
@@ -50,14 +52,6 @@ public class User {
 
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
-	}
-
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
 	}
 	
 	public Set<Sample> getSamples() {
