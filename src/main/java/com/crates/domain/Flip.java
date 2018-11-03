@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -28,9 +29,11 @@ public class Flip {
 	private String comment;
 	
 	@ManyToOne
+	@JoinColumn(name = "sample_id")
 	private Sample sample;
 	
 	@ManyToOne
+	@JoinColumn(name = "beat_id")
 	private Beat beat;
 
 	public Flip(){
