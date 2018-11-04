@@ -32,10 +32,6 @@ public class Flip {
 	@JoinColumn(name = "sample_id")
 	private Sample sample;
 	
-	@ManyToOne
-	@JoinColumn(name = "beat_id")
-	private Beat beat;
-
 	public Flip(){
 		
 	}
@@ -66,14 +62,6 @@ public class Flip {
 	
 	public void setSample(Sample sample){
 		this.sample = sample;
-	}
-	
-	public Beat getBeat(){
-		return beat;
-	}
-	
-	public void setBeat(Beat beat){
-		this.beat = beat;
 	}
 	
 }
