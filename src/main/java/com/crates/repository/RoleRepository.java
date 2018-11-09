@@ -1,5 +1,9 @@
 package com.crates.repository;
 
-public class RoleRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.crates.domain.Role;
+
+public interface RoleRepository extends CrudRepository<Role, Long> {
 
 }

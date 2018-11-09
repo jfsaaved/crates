@@ -1,5 +1,8 @@
 package com.crates.repository;
 
-public class UserRepository {
+import com.crates.domain.User;
+import org.springframework.data.repository.*;
 
+public interface UserRepository extends CrudRepository<User, Long> {
+	User findByUsername(String username);
 }
