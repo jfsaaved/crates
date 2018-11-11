@@ -42,9 +42,6 @@ public class Sample {
 	@OneToMany(targetEntity=Flip.class, mappedBy="sample", fetch=FetchType.EAGER)
 	private List<Flip> flips;
 	
-	@OneToMany
-	private Set<User> users;
-	
 	public Sample(){
 
 	}

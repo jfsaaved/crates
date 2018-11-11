@@ -13,12 +13,12 @@ import javax.persistence.Table;
 @Table(name="\"Role\"")
 public class Role {
 	
-    private Long id;
-    private String name;
-    private Set<User> users;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String name;
+    
+
     public Long getId() {
         return id;
     }
@@ -31,13 +31,6 @@ public class Role {
 		this.name = name;
 	}
 	
-    @ManyToMany(mappedBy = "roles")
-    public Set<User> getUsers() {
-        return users;
-    }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 
 }

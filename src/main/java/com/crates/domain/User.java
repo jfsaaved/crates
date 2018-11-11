@@ -1,24 +1,24 @@
 package com.crates.domain;
 
+import java.util.List;
 import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="\"User\"")
 public class User {
 	
-
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String username;
 	private String password;
 	private String passwordConfirm;
-    private Set<Role> roles;
 	
-	@ManyToMany
-	private Set<Sample> samples;
+	@OneToMany(targetEntity=Flip.class, mappedBy="user", fetch=FetchType.EAGER)
+	private List<Flip> flips;
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -46,24 +46,6 @@ public class User {
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
 	}
-	
-	public Set<Sample> getSamples() {
-		return samples;
-	}
-
-	public void setSamples(Set<Sample> samples) {
-		this.samples = samples;
-	}
-	
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
 	
 
 }

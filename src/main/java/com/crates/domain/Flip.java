@@ -32,6 +32,10 @@ public class Flip {
 	@JoinColumn(name = "sample_id")
 	private Sample sample;
 	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 	public Flip(){
 		
 	}
