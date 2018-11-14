@@ -12,12 +12,16 @@ import com.crates.repository.*;
 @Service
 public class SampleService {
 
-	private SampleRepository sampleRepositry;
+	private SampleRepository sampleRepository;
 	
 	@Autowired
 	public SampleService(SampleRepository sampleRepository){
 		super();
-		this.sampleRepositry = sampleRepository;
+		this.sampleRepository = sampleRepository;
+	}
+	
+	public List<Sample> list() {
+		return sampleRepository.findAllByOrderByTitleAsc();
 	}
 	
 }
