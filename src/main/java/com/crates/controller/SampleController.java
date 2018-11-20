@@ -30,7 +30,12 @@ public class SampleController {
 		this.sampleService = sampleService;
 	}
 	
-	
+	@RequestMapping("/samples/create")
+	public String create(Model model){
+		model.addAttribute("sample", new Sample());
+		model.addAttribute("samples", sampleService.list());
+		return "sample/create";
+	}	
 	
 	@RequestMapping("/samples")
 	public String list(Model model) {
