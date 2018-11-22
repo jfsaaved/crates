@@ -27,13 +27,8 @@ public class Sample {
 	@GeneratedValue
 	private Long id;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat ( pattern="yyyy")
-	private Date year;
-	
 	private String link;
 	
-	@NotEmpty
 	private String title;
 	
 	@NotEmpty
@@ -44,6 +39,10 @@ public class Sample {
 	
 	public Sample(){
 
+	}
+	
+	public Long getId(){
+		return id;
 	}
 	
 	public String getTitle(){

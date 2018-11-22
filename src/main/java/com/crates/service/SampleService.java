@@ -24,4 +24,12 @@ public class SampleService {
 		return sampleRepository.findAllByOrderByTitleAsc();
 	}
 	
+	public Sample save(Sample sample) {
+		return sampleRepository.save(sample);
+	}
+	
+	public Sample get(Long id) {
+		return sampleRepository.findById(id).get();
+	}
+	
 }
