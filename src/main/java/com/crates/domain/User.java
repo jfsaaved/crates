@@ -8,25 +8,30 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "auth_user")
+@Table(name = "user")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "auth_user_id")
 	private int id;
 
-	@Column(name = "username")
-	private String username;
-
+	@Column(name = "email")
+	private String email;
+	 
+	@Column(name = "firstname")
+	private String firstname; 
+	 
+	@Column(name = "lastname")
+	private String lastname;
+	 
 	@Column(name = "password")
 	private String password;
-	
-	@Column(name = "status")
-	private String status;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
+	 
+	@Column(name = "active")
+	private int active;
+	 
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
 	private Set<Role> roles;
 
 	public int getId() {
@@ -36,9 +41,29 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public void setEmail(String email){
+		this.email = email;
+	}
+	
+	public String getEmail(){
+		return this.email;
+	}
+	
+	public String getFirstname() {
+		return firstname;
+	}
 
-	public String getUsername() {
-		return username;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	
 	public String getPassword() {
@@ -49,12 +74,12 @@ public class User {
 		this.password = password;
 	}
 	
-	public String getStatus() {
-		return status;
+	 public int getActive() {
+		 return active;	
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setActive(int active) {
+		  this.active = active;
 	}
 
 	public Set<Role> getRoles() {
